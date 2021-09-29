@@ -1,0 +1,27 @@
+<p>temp-tracker works!</p>
+
+<div class="form-group">
+    <input class="form-control mb-3" pattern="(0|[1-9]\d*)(\.\d+)?" type="text" [(ngModel)]="tempEntered" #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Only numbers are allowed
+    </div>
+    <button class="btn btn-primary" (click)="insertValue()">Check</button>
+</div>
+
+<div class="form-group">
+    <div class="m-3" *ngIf = "temp_arr.length">
+        Inserted Values : {{temp_arr | json}}
+    </div>
+    <div class="m-3" *ngIf = "get_max()">
+        Max : {{get_max()}}
+    </div>
+    <div class="m-3" *ngIf = "get_min()">
+        Min : {{get_min()}}
+    </div>
+    <div class="m-3" *ngIf = "get_mean()">
+        Mean : {{get_mean() | number : '1.0-2'}}
+    </div>
+    <div class="m-3" *ngIf = "get_mode()">
+        Mode : {{get_mode()}}
+    </div>
+</div>

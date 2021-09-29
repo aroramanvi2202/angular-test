@@ -1,0 +1,33 @@
+<h2 class="text-center">Check for "Anagram"</h2>
+
+<form
+  [formGroup]="anagramForm"
+  (ngSubmit)="checkAnagramWords()"
+>
+    <div class="form-group mb-3">
+        <input
+            autocomplete="off"
+            type="text"
+            formControlName="firstword"
+            class="form-control"
+            placeholder="First Word"
+        />
+        <div *ngIf = "(anagramForm.controls.firstword.touched || isSubmitted) && anagramForm.controls.firstword.errors">
+            <small *ngIf = "anagramForm.controls.firstword.errors.required" class="text-danger">This is required.</small>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <input
+            autocomplete="off"
+            type="text"
+            formControlName="secondword"
+            class="form-control"
+            placeholder="First Word"
+        />
+        <div *ngIf = "(anagramForm.controls.secondword.touched || isSubmitted) && anagramForm.controls.secondword.errors">
+            <small *ngIf = "anagramForm.controls.secondword.errors.required" class="text-danger">This is required.</small>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Check</button>
+</form>

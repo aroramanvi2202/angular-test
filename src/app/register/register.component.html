@@ -1,0 +1,60 @@
+<h2 class="text-center">Register Form</h2>
+
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onRegister()"
+>
+    <div class="form-group mb-3">
+        <input
+            autocomplete="off"
+            type="text"
+            formControlName="firstname"
+            class="form-control" id="fname"
+            placeholder="First Name"
+        />
+        <div *ngIf = "(registerForm.controls.firstname.touched || isSubmitted) && registerForm.controls.firstname.errors">
+            <small *ngIf = "registerForm.controls.firstname.errors.required" class="text-danger">This is required.</small>
+            <small *ngIf = "registerForm.controls.firstname.errors.minlength" class="text-danger">Min length should be 5.</small>
+            <small *ngIf = "registerForm.controls.firstname.errors.pattern" class="text-danger">Only alphabets are allowed.</small>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <input
+            autocomplete="off"
+            type="text"
+            formControlName="lastname"
+            class="form-control" id="lname"
+            placeholder="Last Name"
+        />
+        <div *ngIf = "(registerForm.controls.lastname.touched || isSubmitted) && registerForm.controls.lastname.errors">
+            <small *ngIf = "registerForm.controls.lastname.errors.required" class="text-danger">This is required.</small>
+            <small *ngIf = "registerForm.controls.lastname.errors.minlength" class="text-danger">Min length should be 5.</small>
+            <small *ngIf = "registerForm.controls.lastname.errors.pattern" class="text-danger">Only alphabets are allowed.</small>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <input
+            autocomplete="off"
+            type="text"
+            formControlName="phone"
+            class="form-control" id="phone"
+            placeholder="Phone Number"
+        />
+        <div *ngIf = "(registerForm.controls.phone.touched || isSubmitted) && registerForm.controls.phone.errors">
+            <small *ngIf = "registerForm.controls.phone.errors.required" class="text-danger">This is required.</small>
+            <small *ngIf = "registerForm.controls.phone.errors.pattern" class="text-danger">Only numbers are allowed.</small>
+            <small *ngIf = "registerForm.controls.phone.errors.minlength || registerForm.controls.phone.errors.maxlength" class="text-danger">Only 10 digits are allowed.</small>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <select formControlName="country" placeholder="Select Country" class="form-control" id="country">
+            <option value="" disabled selected hidden>Choose country</option>
+            <option *ngFor = "let country of countryList" [value]="country.code">{{country.name}}</option>
+        </select>
+        <div *ngIf = "(registerForm.controls.country.touched || isSubmitted) && registerForm.controls.country.errors">
+            <small *ngIf = "registerForm.controls.country.errors.required" class="text-danger">This is required.</small>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
