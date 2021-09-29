@@ -1,0 +1,7 @@
+.d-flex div:not(:last-child):after {
+    content: '>';
+}
+
+a {
+    padding: 1.5rem;
+}
